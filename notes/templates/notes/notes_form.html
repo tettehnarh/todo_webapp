@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'notes-create' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-primary my-5">
+        Submit
+    </button>
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.errors.title.as_text }}
+        </div>
+    {% endif %}
+</form>
+
+{% endblock %}
